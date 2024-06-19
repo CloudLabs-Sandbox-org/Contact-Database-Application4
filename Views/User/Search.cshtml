@@ -1,0 +1,32 @@
+﻿@model CRUD_application_2.Models.User
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+// Form to search for a user
+@using (Html.BeginForm("Search", "User", FormMethod.Get))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+}
+// Display the search results
+@if (Model != null)
+{
+    <h3>Search Results</h3>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+         </tr>
+        <tr>
+            <td>@Model.Name</td>
+            <td>@Model.Email</td>
+        </tr>
+    </table>
+    }
